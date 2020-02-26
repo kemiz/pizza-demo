@@ -1,28 +1,23 @@
 <template>
   <div class="login-page">
     <div class="bg" v-if="!$auth.loading">
-      <h1 class="title">Pizza 42 Delivery</h1>
-      <img src="../assets/pizza.gif" width="50%">
-        <div 
-          class="login_btn noselect" 
-          v-if="!$auth.isAuthenticated" @click="login"
-          @mouseover="attachAqua = !attachAqua"
-          @mouseleave="attachAqua = !attachAqua"
-          @mouseup="attachAquamarine = !attachAquamarine, attachAqua = !attachAqua"
-          @mousedown="attachAquamarine = !attachAquamarine, attachAqua = !attachAqua"
-          :class="{aqua: attachAqua, aquamarine: attachAquamarine}">
-          login
-        </div>
-        <div 
-          class="login_btn noselect" 
-          v-if="$auth.isAuthenticated" @click="logout"
-          @mouseover="attachAqua = !attachAqua"
-          @mouseleave="attachAqua = !attachAqua"
-          @mouseup="attachAquamarine = !attachAquamarine, attachAqua = !attachAqua"
-          @mousedown="attachAquamarine = !attachAquamarine, attachAqua = !attachAqua"
-          :class="{aqua: attachAqua, aquamarine: attachAquamarine}">
-          logout
-        </div>
+    <div id="container">
+      <img v-show="$auth.isAuthenticated" src="../assets/pizza.gif" width="100%">
+      <div id="left"></div>
+      <div id="right"></div>
+      <div id="center">      
+      <div 
+        class="login_btn noselect" 
+        v-show="!$auth.isAuthenticated" @click="login"
+        @mouseover="attachAqua = !attachAqua"
+        @mouseleave="attachAqua = !attachAqua"
+        @mouseup="attachAquamarine = !attachAquamarine, attachAqua = !attachAqua"
+        @mousedown="attachAquamarine = !attachAquamarine, attachAqua = !attachAqua"
+        :class="{aqua: attachAqua, aquamarine: attachAquamarine}">
+        login
+      </div>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -51,53 +46,25 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#login-page {
-  text-align: center;
-  margin-top: 20px;
-}
-
-
-.title {
-  color: grey;
-  font-size: 34px;
-  font-weight: lighter;
-  text-align: center;
-}
-
-.main {  
-  padding-left: 180%;
-}
 
 .bg {
   background-color:  #cabb68;
-  position: absolute;
-  width: 80%;
-  height: 400px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
+  width: 100%;
+  height: 500px;
+  margin-top: 8px;
 }
 
 .login_btn {
   border-radius: 20px;
-  width: 100px;
-  height: 25px;
+  width: 110px;
+  height: 45px;
   background-color: gray;
   text-align: center;
   font-weight: bolder;
   font-size: 24px;
   color: white;
-  padding: 20px;
-  position: absolute;
-  top:0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  text-align: center;
-  color: #2c3e50;
-  margin: auto;
+  padding-top: 6px;
 }
 
 .aquamarine {
@@ -118,4 +85,14 @@ export default {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently */
 }
+
+#container{width:100%;}
+#left{float:left;width:100px;}
+#right{float:right;width:100px;}
+#center{
+  margin:0 auto;
+  width:100px;
+  text-align: center;
+  padding-top: 150px;}
+
 </style>
